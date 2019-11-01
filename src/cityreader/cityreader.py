@@ -1,13 +1,15 @@
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
-import csv
 
+      
 class City():
-  def __init__(self, lat, lon):
+  def __init__(self, name, lat, lon):
+    self.name = name
     self.lat = lat
     self.lon = lon
-
+  def __repr__(self):
+    return f"\nName: {self.name}, Lat: {self.lat}, Lon: {self.lon}"
 
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
@@ -15,7 +17,49 @@ class City():
 # In the body of the `cityreader` function, use Python's built-in "csv" module 
 # to read this file so that each record is imported into a City instance. 
 # 
+cityList = []
+#print("this is cityList start ", cityList)
+import csv
 
+def cityreader():
+  # TODO Implement the functionality to read from the 'cities.csv' file
+  # For each city record, create a new City instance and add it to the 
+  # `cities` list
+  with open("src/cityreader/cities.csv", newline='') as csvfile:
+      dataReader = csv.reader(csvfile, delimiter=',')
+      #print(dataReader)
+      # cityNames = []
+      # cityLats = []
+      # cityLons = []
+      for row in dataReader:
+        #print ("A row is ", row)
+        cityName = row[0]
+        cityLat = row[3]
+        cityLon = row[4]
+        #print ("this is the data: ", cityName, cityLat, cityLon)
+        #print("this is the object: ", City(cityName, cityLat, cityLon))
+
+        cityList.append(City(cityName, cityLat, cityLon))
+        #print("this is cityList: ", cityList)
+
+        # cityNames
+        #print("data is: ", cityName, cityLat, cityLon)
+        #cityList.append(City(cityName, cityLat, cityLon)) 
+        #print("this is cityList inside function, ", cityList)
+        #return cityList
+
+  
+  
+
+cityreader()
+
+# >>> import csv
+# >>> with open('eggs.csv', newline='') as csvfile:
+# ...     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+# ...     for row in spamreader:
+# ...         print(', '.join(row))
+# Spam, Spam, Spam, Spam, Spam, Baked Beans
+# Spam, Lovely Spam, Wonderful Spam
 
 # Then
 # return the list with all the City instances from the function.
@@ -30,29 +74,17 @@ class City():
 # 2) cityReader should return cities from the csv file, put them into the [] list
 # 3) Ignore first line of csv file
 
-cities = []
-
-def cityreader(cities=[]):
-  # TODO Implement the functionality to read from the 'cities.csv' file
-  # For each city record, create a new City instance and add it to the 
-  # `cities` list
-  csvfile.reader(cities.csv, delimiter = " ")
-    
-  return cities
-
-cityreader(cities)
-
-# >>> import csv
-# >>> with open('eggs.csv', newline='') as csvfile:
-# ...     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-# ...     for row in spamreader:
-# ...         print(', '.join(row))
-# Spam, Spam, Spam, Spam, Spam, Baked Beans
-# Spam, Lovely Spam, Wonderful Spam
+#cityreader()
 
 # Print the list of cities (name, lat, lon), 1 record per line.
-for c in cities:
-    print(c)
+print (cityList)
+# for c in cityList:
+#   print("this is c: ", c)
+#   for d in c:
+#     print("this is d: ", d)
+
+
+
 
 # STRETCH GOAL!
 #
@@ -83,14 +115,14 @@ for c in cities:
 # Tucson: (32.1558,-110.8777)
 # Salt Lake City: (40.7774,-111.9301)
 
-# TODO Get latitude and longitude values from the user
+# # TODO Get latitude and longitude values from the user
 
-def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
-  # within will hold the cities that fall within the specified region
-  within = []
+# def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
+#   # within will hold the cities that fall within the specified region
+#   within = []
 
-  # TODO Ensure that the lat and lon valuse are all floats
-  # Go through each city and check to see if it falls within 
-  # the specified coordinates.
+#   # TODO Ensure that the lat and lon valuse are all floats
+#   # Go through each city and check to see if it falls within 
+#   # the specified coordinates.
 
-  return within
+#   return within
