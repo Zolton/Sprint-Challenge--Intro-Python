@@ -20,7 +20,7 @@ cities = []
 
 import csv
 
-def cityreader():
+def cityreader(cities = []):
   with open("src/cityreader/cities.csv", newline='') as csvfile:
       dataReader = csv.reader(csvfile)
       next(dataReader)
@@ -29,14 +29,15 @@ def cityreader():
         cityLat = float(row[3])
         cityLon = float(row[4])
         cities.append(City(cityName, cityLat, cityLon))
-      return cities
+  print("Hello from line 32: ", len(cities))
+  return cities
 
-
-cityreader()
+cityreader(cities)
 
 
 print (cities)
-print("length of my cities: ", len(cities))
+print("Hello from line 39: ", len(cities))
+
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 
