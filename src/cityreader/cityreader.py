@@ -1,6 +1,10 @@
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
+class City():
+  def __init__(self, lat, lon):
+    pass
+
 
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
@@ -14,16 +18,26 @@
 #
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
+
 cities = []
 
 def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
   # For each city record, create a new City instance and add it to the 
   # `cities` list
+  csvfile.reader(cities.csv, delimiter = " ")
     
     return cities
 
 cityreader(cities)
+
+# >>> import csv
+# >>> with open('eggs.csv', newline='') as csvfile:
+# ...     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+# ...     for row in spamreader:
+# ...         print(', '.join(row))
+# Spam, Spam, Spam, Spam, Spam, Baked Beans
+# Spam, Lovely Spam, Wonderful Spam
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
